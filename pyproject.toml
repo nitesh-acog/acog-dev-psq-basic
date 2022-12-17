@@ -10,6 +10,8 @@ packages = [{include = "acog_dev_psq_basic"}]
 python = "^3.11"
 django = "^4.1.4"
 celery = "^5.2.7"
+redis = "^4.4.0"
+django-celery-beat = "^2.4.0"
 
 
 [build-system]
