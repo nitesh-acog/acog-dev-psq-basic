@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "acog-dev-psq-basic"
+version = "0.1.0"
+description = ""
+authors = ["Nitesh Kumar Gupta"]
+readme = "README.md"
+packages = [{include = "acog_dev_psq_basic"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "^4.1.4"
+celery = "^5.2.7"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
