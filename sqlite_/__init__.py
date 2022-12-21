@@ -43,7 +43,7 @@ class SQLITE3:
     
 
     
-    def insert_record(self,table_name:str,infile:str,out_file:str,status:int=0):
+    def insert_record(self,table_name:str,infile:str,out_file:str,status):
         with sqlite3.connect(self.path) as conn:
             cursor=conn.cursor()
             cursor.execute(f'INSERT INTO {table_name} values(?,?,?)',(infile,out_file,status))
@@ -58,14 +58,12 @@ class SQLITE3:
 
         return (infile_,out_file_) in [(x[0],x[1]) for x in cursor.fetchall()]
 
-    def update_table(table_name:str,values_to_update:dict):
-        infile=values_to_update['infile']
-        outfile=values_to_update['outfile']
-        status=values_to_update['status']
+    def update_table(self,table_name:str,i:str,o:str,s:int):
+        
         
         with sqlite3.connect(self.path) as conn:
             cursor=conn.cursor()
-            cursor.execute(f'UPDATE {table_name} SET status={status} where in_file={infile} and out_file={outfile}')
+            cursor.execute(f'UPDATE {table_name} SET STATUS=? where in_file= ? and out_file=?',(s,i,o))
             conn.commit()
     
     def delete_record(table_name:str):
